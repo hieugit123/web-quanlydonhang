@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.LoginRequest;
+import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,16 @@ public class AuthController {
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    @GetMapping("/createuser")
+    public ResponseEntity<String> creatAdmin() {
+        User user =  new User();
+        user.setPassword("123456@");
+        user.setRole(Role.ADMIN);
+        user.setUsername("xuanzzz123z");
+        userRepository.save(user);
+        return ResponseEntity.ok("Tạo tài khoản thành công!");
     }
 
     @PostMapping("/users")

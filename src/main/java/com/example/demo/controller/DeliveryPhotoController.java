@@ -23,7 +23,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 public class DeliveryPhotoController {
 
-    @Value("${upload.path}")
+    @Value("${upload.path:/app/uploads/}")
     private String uploadPath;
     private final DeliveryPhotoRepository photoRepository;
     private final OrderRepository orderRepository;
